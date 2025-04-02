@@ -41,9 +41,11 @@ console.log("items", items,)
         {/* Top Bar */}
         <div className="flex items-center justify-between py-4">
           {/* Logo */}
+          <Link to="/" className="relative">
           <div className="text-2xl font-bold text-grey-600 tracking-tight">
             SEPHORA
           </div>
+          </Link>
 
           {/* Search Bar */}
           <div className="relative mx-4 flex-1 max-w-xl">

@@ -3,6 +3,8 @@ import { RootState } from '../Redux/Store'; // Adjust the path to your store
 import { Link } from 'react-router-dom';
 import { removeItem, updateQty } from '../Redux/CartSlice';
 import { useDispatch } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
+
 
 const ShoppingCartPage = () => {
   const { items } = useSelector((state: RootState) => state.CartReducer);
@@ -10,6 +12,8 @@ const ShoppingCartPage = () => {
 
   const handleremoveItem = (productId: string) => {
     dispatch(removeItem(productId));
+    toast.success("Product Item removed from cart successfully");
+
   };
 
   const handleQuantityChange = (productId: string, qty: number) => {
@@ -32,7 +36,7 @@ const ShoppingCartPage = () => {
         <div className="text-center py-12">
           <h2 className="text-xl font-semibold mb-4">Your cart is empty</h2>
           <Link 
-            to="/products" 
+            to="/" 
             className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition"
           >
             Continue Shopping
@@ -123,7 +127,7 @@ const ShoppingCartPage = () => {
               </button>
               
               <Link 
-                to="/products" 
+                to="/" 
                 className="block text-center text-blue-600 mt-4 hover:text-blue-800"
               >
                 Continue Shopping
@@ -132,6 +136,8 @@ const ShoppingCartPage = () => {
           </div>
         </div>
       )}
+      <ToastContainer />
+
     </div>
   );
 };

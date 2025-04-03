@@ -1,7 +1,7 @@
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
 import { addItem } from '../Redux/CartSlice';
-
+import { ToastContainer, toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 interface Product {
   id: number;
@@ -99,6 +99,7 @@ const ProductCarousel = () => {
 
   const handleAddItems = (product:any)=>{
     dispatch(addItem({id:product.id, name:product.name, prize:product.price, qty:1, image:product.image}))
+    toast.success("Product item add to cart successfully");
   }
   const productSlides = [];
   const productsPerSlide = 4;
@@ -209,6 +210,8 @@ const ProductCarousel = () => {
           ))}
         </Slide>
       </div>
+      <ToastContainer />
+
     </section>
   );
 };

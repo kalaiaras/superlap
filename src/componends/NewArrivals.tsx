@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
 import { addItem } from '../Redux/CartSlice';
-
+import { ToastContainer, toast } from 'react-toastify';
 
 const NewArrivalsBeauty = () => {
  const dispatch = useDispatch()
@@ -188,6 +188,8 @@ const NewArrivalsBeauty = () => {
 
   const handleAddItems = (product:any)=>{
     dispatch(addItem({id:product.id, name:product.name, prize:product.price, qty:1, image:product.image}))
+    toast.success("Product item add to cart successfully");
+
   }
   for (let i = 0; i < beautyProducts.length; i += productsPerSlide) {
     productSlides.push(beautyProducts.slice(i, i + productsPerSlide));
@@ -313,6 +315,7 @@ const NewArrivalsBeauty = () => {
           ))}
         </Slide>
       </div>
+      <ToastContainer />
     </section>
   );
 };
